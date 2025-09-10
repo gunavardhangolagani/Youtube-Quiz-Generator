@@ -1,8 +1,6 @@
-# Youtube-Analyser
+# Youtube-Quiz-Generator
 
-# You-Quiz
-
-You-Quiz is an application that allows you to create quizzes based on YouTube videos and analyze the results. Simply provide a YouTube link, and the application will generate a quiz based on the video content. After taking the quiz, the application provides a detailed report with the quiz results.
+You-Analyzer is an application that allows you to create quizzes based on YouTube videos and analyze the results. Simply provide a YouTube link, and the application will generate a quiz based on the video content. After taking the quiz, the application provides a detailed report with the quiz results.
 
 ## Getting Started
 
@@ -11,13 +9,13 @@ To run the You-Quiz application, follow these steps:
 1. Clone the repository to your local machine:
 
    ```
-   git clone https://github.com/jokergithu/Youtube-Analyser.git
+   git clone https://github.com/gunavardhangolagani/Youtube-Quiz-Generator.git
    ```
 
 2. Navigate to the project directory:
 
    ```
-   cd You-Quiz
+   cd Youtube-Quiz-Generator
    ```
 
 3. Install the required dependencies:
@@ -28,8 +26,7 @@ To run the You-Quiz application, follow these steps:
 4. Run the following commands:
 
    ```
-   sudo apt update
-   sudo apt install ffmpeg
+   sudo apt update && sudo apt-get install -y ffmpeg
    ```
 
 5. Run the application:
