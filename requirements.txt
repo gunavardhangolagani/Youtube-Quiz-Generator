@@ -1,6 +1,0 @@
-deep_translator
-groq
-moviepy
-streamlit
-whisper
-yt_dlp

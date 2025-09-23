@@ -1,6 +1,6 @@
 # Youtube-Quiz-Generator
 
-You-Analyzer is an application that allows you to create quizzes based on YouTube videos and analyze the results. Simply provide a YouTube link, and the application will generate a quiz based on the video content. After taking the quiz, the application provides a detailed report with the quiz results.
+You-Quiz-Generator is an application that allows you to create quizzes based on YouTube videos and analyze the results. Simply provide a YouTube link, and the application will generate a quiz based on the video content. After taking the quiz, the application provides a detailed report with the quiz results.
 
 ## Getting Started
 
@@ -34,7 +34,11 @@ To run the You-Quiz application, follow these steps:
    ```
    python app.py
    ```
+6. Frontend requirements:
 
+   ```react
+   npm install @mui/material @emotion/react @emotion/styled @mui/icons-material
+   ```
 6. Open your web browser and go to [http://localhost:5000](http://localhost:5000) to access the You-Quiz application.
 
 ## Usage
