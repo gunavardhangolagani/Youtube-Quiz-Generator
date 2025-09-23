@@ -2,6 +2,8 @@
 
 You-Quiz-Generator is an application that allows you to create quizzes based on YouTube videos and analyze the results. Simply provide a YouTube link, and the application will generate a quiz based on the video content. After taking the quiz, the application provides a detailed report with the quiz results.
 
+<img width="1772" height="1331" alt="Image" src="https://github.com/user-attachments/assets/1888eefe-e1f0-445c-9b3f-448ec69ac840" />
+
 ## Getting Started
 
 To run the You-Quiz application, follow these steps:
