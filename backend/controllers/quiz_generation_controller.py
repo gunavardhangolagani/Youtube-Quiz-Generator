@@ -8,19 +8,18 @@ from utils.processing import fn_generate_summary
 from utils.processing import fn_transcribe_audio
 from utils.processing import fn_extract_audio
 
-
+import os
 import json
-
-
 
 def fn_download_youtube_video(youtube_url):
     """
     Downloads the audio from a YouTube URL and saves it as a WAV file.
-
-    Returns path to WAV file.
+    Returns path to WAV file or raises a RuntimeError with a clean message.
     """
     temp_dir = tempfile.gettempdir()
     outtmpl = temp_dir + '/youtube_audio.%(ext)s'
+    cookies_path = "/etc/secrets/YTDLP_COOKIES"
+
     ydl_opts = {
         'format': 'bestaudio/best',
         'outtmpl': outtmpl,
@@ -29,18 +28,29 @@ def fn_download_youtube_video(youtube_url):
             'preferredcodec': 'wav',
             'preferredquality': '192',
         }],
-        'quiet': True
+        'quiet': True,
     }
-    with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-        info = ydl.extract_info(youtube_url, download=True)
-        # prepare_filename will give the path with original extension, replace it with .wav
-        generated = ydl.prepare_filename(info)
-        # Replace whatever extension exists with .wav to match postprocessor output
-        if '.' in generated:
-            audio_path = generated.rsplit('.', 1)[0] + '.wav'
-        else:
-            audio_path = generated + '.wav'
-    return audio_path
+    if os.path.exists(cookies_path):
+        ydl_opts['cookies'] = cookies_path
+
+    try:
+        with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+            info = ydl.extract_info(youtube_url, download=True)
+            generated = ydl.prepare_filename(info)
+
+            # Replace with .wav (post-processor output)
+            if '.' in generated:
+                audio_path = generated.rsplit('.', 1)[0] + '.wav'
+            else:
+                audio_path = generated + '.wav'
+
+        return audio_path
+    except yt_dlp.utils.DownloadError as e:
+        raise RuntimeError(f"Failed to download video: {str(e)}") from e
+    except Exception as e:
+        raise RuntimeError(f"Unexpected error while processing YouTube URL: {str(e)}") from e
+
+
 
 def help_fn_extract_audio(video_path):
     """
