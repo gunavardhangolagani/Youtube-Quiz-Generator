@@ -2,7 +2,7 @@ deep_translator
 groq
 moviepy
 streamlit
-@ pip install git+https://github.com/openai/whisper.git
+whisper @ git+https://github.com/openai/whisper.git
 yt_dlp
 fastapi
 dotenv
