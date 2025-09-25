@@ -5,6 +5,7 @@ import Footer from '../components/Footer';
 import YouTubeInput from '../components/YoutubeInput';
 import QuizInterface from '../components/QuizInterface';
 import QuizReport from '../components/QuizReport';
+import { generateQuizFromYouTube} from "../services/quizService"; // <-- correct relative path
 
 const Home = () => {
   const [currentStep, setCurrentStep] = useState('input'); // 'input', 'quiz', 'report'
@@ -16,24 +17,24 @@ const Home = () => {
     setIsLoading(true);
 
     try {
-      const response = await fetch("http://127.0.0.1:8000/youtube_link/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams({
-          youtube_url: url,
-          target_lang: "en",
-          difficulty: "medium"
-        })
-      });
+      const data = await generateQuizFromYouTube(url);
 
-      if (!response.ok) {
-        throw new Error("Failed to fetch quiz");
-      }
+      // const response = await fetch("http://127.0.0.1:8000/youtube_link/", {
+      //   method: "POST",
+      //   headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      //   body: new URLSearchParams({
+      //     youtube_url: url,
+      //     target_lang: "en",
+      //     difficulty: "medium"
+      //   })
+      // });
 
-      const data = await response.json();
+      // if (!response.ok) {
+      //   throw new Error("Failed to fetch quiz");
+      // }
+      // const data = await response.json();
       console.log("Backend response:", data);
 
-      // ✅ backend returns { transcript, summary, quiz }
       const formattedQuiz = {
         title: "Generated Quiz",
         questions: (Array.isArray(data.quiz) ? data.quiz : []).map((q, idx) => ({
