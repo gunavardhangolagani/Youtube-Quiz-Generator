@@ -5,5 +5,7 @@ streamlit
 git+https://github.com/openai/whisper.git#egg=openai-whisper
 yt_dlp
 fastapi
+uvicorn[standard]
+gunicorn
 python-dotenv
 python-multipart
