@@ -10,7 +10,7 @@ const QuizReport = ({ quiz, answers, onRetakeQuiz }) => {
     const fetchResults = async () => {
       try {
         // POST to backend verify_answers route
-        const res = await axios.post('http://localhost:8000/verify_answers', {
+        const res = await axios.post(`${import.meta.env.VITE_API_BASE_URL}verify_answers`, {
           quiz: quiz.questions, // original quiz
           user_answers: Object.fromEntries(
             Object.entries(answers).map(([k, v]) => [String(k), v])
