@@ -9,6 +9,4 @@ uvicorn[standard]
 gunicorn
 python-dotenv
 python-multipart
-pytube
-pydub
 youtube-transcript-api
