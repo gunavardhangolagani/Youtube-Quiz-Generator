@@ -50,8 +50,6 @@ def fn_download_youtube_video(youtube_url):
     except Exception as e:
         raise RuntimeError(f"Unexpected error while processing YouTube URL: {str(e)}") from e
 
-
-
 def help_fn_extract_audio(video_path):
     """
     Extracts audio from a video file and saves as a WAV in the system temp dir.
